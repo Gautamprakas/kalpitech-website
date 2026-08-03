@@ -648,6 +648,11 @@
   color: var(--ink-faint);
 }
 
+.footer__links {
+  display: flex;
+  gap: 20px;
+}
+
 .footer a:hover {
   color: var(--primary);
 }

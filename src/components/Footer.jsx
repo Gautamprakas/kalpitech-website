@@ -5,7 +5,10 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer__inner">
         <span>&copy; {new Date().getFullYear()} {brand.name}. All rights reserved.</span>
-        <a href="#contact">Get in touch</a>
+        <span className="footer__links">
+          <a href="kalpi.html">About Kalpi</a>
+          <a href="#contact">Get in touch</a>
+        </span>
       </div>
     </footer>
   )
