@@ -94,6 +94,24 @@
         margin: 28px 0 8px;
       }
       .place-title:first-of-type { margin-top: 20px; }
+      .place-photo {
+        margin: 0 0 20px;
+      }
+      .place-photo img {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 12px;
+        display: block;
+      }
+      .place-photo--small img,
+      .place-photo--portrait img {
+        max-width: 280px;
+      }
+      .place-photo figcaption {
+        font-size: 12.5px;
+        color: var(--ink-soft);
+        margin-top: 6px;
+      }
       .note {
         margin-top: 40px;
         padding: 18px 20px;
@@ -144,6 +162,11 @@
         been passed down through generations of local artisans.
       </p>
 
+      <figure class="place-photo">
+        <img src="yamuna-river.jpg" alt="The Yamuna river at Kalpi, with the road bridge in the distance" />
+        <figcaption>The Yamuna river at Kalpi, with the road bridge in the distance.</figcaption>
+      </figure>
+
       <h2>Known For</h2>
       <div class="highlights">
         <div class="highlight">
@@ -163,6 +186,10 @@
       <h2>Places to Explore</h2>
 
       <h3 class="place-title">Chaurasi Gumbad (84 Gumbad)</h3>
+      <figure class="place-photo place-photo--small">
+        <img src="chaurasi-gumbad.jpg" alt="Chaurasi Gumbad, a domed Lodi-era monument in Kalpi" />
+        <figcaption>Chaurasi Gumbad, seen from the road.</figcaption>
+      </figure>
       <p>
         A striking 15th–16th century monument from the Lodi Sultanate era, standing just west of old
         Kalpi on the way to Orai. It's a square, nine-domed structure inside a walled courtyard, built
@@ -173,6 +200,10 @@
       </p>
 
       <h3 class="place-title">Lanka Minar</h3>
+      <figure class="place-photo place-photo--portrait">
+        <img src="lanka-minar.jpg" alt="Aerial view of Lanka Minar tower rising above Kalpi" />
+        <figcaption>Lanka Minar, rising above the rooftops of Kalpi.</figcaption>
+      </figure>
       <p>
         Located in Kalpi's Ganesh Ganj area, Lanka Minar is said to be the only monument in North India
         built in memory of Ravana. Visitors climb a long flight of steps to reach the top, where statues
