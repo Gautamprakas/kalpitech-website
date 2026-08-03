@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalpi News — Local News from Jalaun | Kalpitech</title>
+    <meta
+      name="description"
+      content="Live local news updates for Kalpi and Jalaun district, sourced directly from Facebook news pages."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #ffffff;
+        --bg-muted: #f7f7f8;
+        --ink: #14151a;
+        --ink-soft: #5a5d6b;
+        --border: #e4e4e9;
+        --red: #b91c1c;
+        --red-dark: #7f1d1d;
+        --fb: #1877f2;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        color: var(--ink);
+        background: var(--bg-muted);
+        line-height: 1.6;
+      }
+      .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+      /* Utility bar */
+      .utility-bar {
+        background: var(--ink);
+        color: #cbd0dc;
+        font-size: 12.5px;
+        padding: 7px 0;
+      }
+      .utility-bar .container { display: flex; justify-content: space-between; align-items: center; }
+      .utility-bar__edition { font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: #fff; }
+
+      /* Masthead */
+      .masthead {
+        background: #fff;
+        border-bottom: 4px solid var(--red);
+        text-align: center;
+        padding: 30px 0 20px;
+      }
+      .masthead__eyebrow {
+        font-size: 12.5px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--red);
+        margin-bottom: 6px;
+      }
+      .masthead h1 {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-weight: 900;
+        font-size: 52px;
+        margin: 0;
+        letter-spacing: -0.01em;
+        color: var(--ink);
+      }
+      .masthead p {
+        color: var(--ink-soft);
+        font-size: 15px;
+        margin: 10px 0 0;
+      }
+
+      /* Category rail */
+      .category-rail {
+        background: var(--red);
+        color: #fff;
+      }
+      .category-rail .container {
+        display: flex;
+        gap: 26px;
+        padding: 9px 24px;
+        font-size: 12.5px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        overflow-x: auto;
+      }
+      .category-rail span { white-space: nowrap; opacity: 0.92; }
+      .category-rail span:first-child { opacity: 1; }
+
+      main { padding: 40px 0 48px; }
+
+      .section-label {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin-bottom: 22px;
+      }
+      .section-label h2 {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 24px;
+        font-weight: 800;
+        margin: 0;
+        border-bottom: 3px solid var(--red);
+        padding-bottom: 8px;
+      }
+      .section-label span {
+        font-size: 12.5px;
+        color: var(--ink-soft);
+        font-weight: 600;
+      }
+
+      /* Source grid: 3 columns */
+      .source-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        align-items: start;
+      }
+
+      .source-card {
+        border: 1px solid var(--border);
+        border-top: 3px solid var(--red);
+        border-radius: 4px;
+        overflow: hidden;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+      }
+      .source-card__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 16px 16px 12px;
+      }
+      .source-card__name { display: flex; align-items: center; gap: 10px; }
+      .source-card__avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--fb);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 14px;
+        flex-shrink: 0;
+      }
+      .source-card__name strong { display: block; font-size: 14.5px; line-height: 1.3; }
+      .source-card__badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 10.5px;
+        font-weight: 700;
+        color: var(--fb);
+        background: rgba(24, 119, 242, 0.1);
+        padding: 2px 8px;
+        border-radius: 999px;
+        margin-top: 3px;
+      }
+      .source-card__live {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 10px;
+        font-weight: 800;
+        color: var(--red);
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        flex-shrink: 0;
+      }
+      .source-card__live::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--red);
+        display: inline-block;
+      }
+      .source-card__embed {
+        background: #fff;
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: center;
+        flex: 1;
+        min-height: 300px;
+      }
+      .source-card__embed iframe { width: 100%; border: none; overflow: hidden; }
+      .fb-page { width: 100%; }
+
+      /* Shown only if the Facebook embed script is blocked (ad blockers, privacy extensions) */
+      .fb-fallback {
+        padding: 28px 20px;
+        text-align: center;
+        color: var(--ink-soft);
+        font-size: 13.5px;
+      }
+      .fb-fallback strong { display: block; color: var(--ink); font-size: 14.5px; margin-bottom: 8px; }
+      .fb-fallback .btn {
+        display: inline-block;
+        margin-top: 14px;
+        padding: 8px 18px;
+        border-radius: 999px;
+        background: var(--fb);
+        color: #fff;
+        font-weight: 700;
+        font-size: 13px;
+        text-decoration: none;
+      }
+      .source-card__footer {
+        padding: 10px 16px;
+        border-top: 1px solid var(--border);
+        text-align: center;
+      }
+      .source-card__footer a {
+        font-size: 12.5px;
+        font-weight: 700;
+        color: var(--ink);
+        text-decoration: none;
+      }
+      .source-card__footer a:hover { color: var(--red); }
+
+      /* Placeholder card for future sources */
+      .source-card--placeholder {
+        border-top-color: var(--border);
+        border-style: dashed;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 30px 22px;
+        color: var(--ink-soft);
+        min-height: 300px;
+      }
+      .source-card--placeholder .icon {
+        font-size: 30px;
+        margin-bottom: 10px;
+      }
+      .source-card--placeholder h3 {
+        font-size: 15px;
+        margin: 0 0 8px;
+        color: var(--ink);
+      }
+      .source-card--placeholder p { font-size: 13px; margin: 0; }
+
+      .note {
+        margin-top: 32px;
+        padding: 16px 20px;
+        border-radius: 6px;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--red);
+        font-size: 13.5px;
+        color: var(--ink-soft);
+      }
+      .note strong { color: var(--ink); }
+
+      footer {
+        border-top: 1px solid var(--border);
+        background: #fff;
+        padding: 26px 0;
+        text-align: center;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+      }
+      footer a { color: var(--ink); text-decoration: none; font-weight: 700; margin: 0 10px; }
+      footer a:hover { color: var(--red); }
+
+      @media (max-width: 980px) {
+        .source-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 680px) {
+        .masthead h1 { font-size: 34px; }
+        .source-grid { grid-template-columns: 1fr; }
+        .utility-bar .container { flex-direction: column; gap: 3px; align-items: flex-start; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({ xfbml: true, version: 'v19.0' })
+      }
+      ;(function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0]
+        if (d.getElementById(id)) return
+        js = d.createElement(s)
+        js.id = id
+        js.src = 'https://connect.facebook.net/en_US/sdk.js'
+        fjs.parentNode.insertBefore(js, fjs)
+      })(document, 'script', 'facebook-jssdk')
+    </script>
+
+    <div class="utility-bar">
+      <div class="container">
+        <span id="today-date">Local Edition</span>
+        <span class="utility-bar__edition">Kalpi · Jalaun District</span>
+      </div>
+    </div>
+
+    <header class="masthead">
+      <div class="container">
+        <span class="masthead__eyebrow">Kalpitech Presents</span>
+        <h1>KALPI NEWS</h1>
+        <p>Live local news, straight from Facebook — reporters and news pages covering Kalpi &amp; Jalaun.</p>
+      </div>
+    </header>
+
+    <nav class="category-rail">
+      <div class="container">
+        <span>🔴 Live Sources</span>
+        <span>Kalpi</span>
+        <span>Orai</span>
+        <span>Jalaun District</span>
+        <span>Uttar Pradesh</span>
+      </div>
+    </nav>
+
+    <main class="container">
+      <div class="section-label">
+        <h2>Local News Sources</h2>
+        <span>Updated automatically from Facebook</span>
+      </div>
+
+      <div class="source-grid">
+        <div class="source-card">
+          <div class="source-card__header">
+            <div class="source-card__name">
+              <span class="source-card__avatar">N</span>
+              <div>
+                <strong>News 92 Live Network</strong>
+                <span class="source-card__badge">📘 Facebook</span>
+              </div>
+            </div>
+            <span class="source-card__live">Live</span>
+          </div>
+          <div class="source-card__embed">
+            <div
+              class="fb-page"
+              data-href="https://www.facebook.com/news92livenetwork"
+              data-tabs="timeline"
+              data-width="380"
+              data-height="620"
+              data-small-header="true"
+              data-adapt-container-width="true"
+              data-hide-cover="false"
+              data-show-facepile="false"
+            >
+              <div class="fb-fallback">
+                <strong>Live preview unavailable</strong>
+                This can happen with ad blockers or privacy extensions.
+                <a class="btn" href="https://www.facebook.com/news92livenetwork" target="_blank" rel="noreferrer">
+                  Open on Facebook &#8599;
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="source-card__footer">
+            <a href="https://www.facebook.com/news92livenetwork" target="_blank" rel="noreferrer">View Page on Facebook &#8599;</a>
+          </div>
+        </div>
+
+        <div class="source-card">
+          <div class="source-card__header">
+            <div class="source-card__name">
+              <span class="source-card__avatar">U</span>
+              <div>
+                <strong>UP ToDay News India — Orai</strong>
+                <span class="source-card__badge">📘 Facebook</span>
+              </div>
+            </div>
+            <span class="source-card__live">Live</span>
+          </div>
+          <div class="source-card__embed">
+            <div
+              class="fb-page"
+              data-href="https://www.facebook.com/UPToDayNewsIndiaOraivickyJalaun"
+              data-tabs="timeline"
+              data-width="380"
+              data-height="620"
+              data-small-header="true"
+              data-adapt-container-width="true"
+              data-hide-cover="false"
+              data-show-facepile="false"
+            >
+              <div class="fb-fallback">
+                <strong>Live preview unavailable</strong>
+                This can happen with ad blockers or privacy extensions.
+                <a class="btn" href="https://www.facebook.com/UPToDayNewsIndiaOraivickyJalaun" target="_blank" rel="noreferrer">
+                  Open on Facebook &#8599;
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="source-card__footer">
+            <a href="https://www.facebook.com/UPToDayNewsIndiaOraivickyJalaun" target="_blank" rel="noreferrer">View Page on Facebook &#8599;</a>
+          </div>
+        </div>
+
+        <div class="source-card source-card--placeholder">
+          <span class="icon">➕</span>
+          <h3>More Sources Coming Soon</h3>
+          <p>
+            We're only able to add public Facebook <strong>Pages</strong> here, not personal profiles or
+            groups — Facebook doesn't allow embedding those. If a reporter sets up a Page for their
+            updates, we can add it here.
+          </p>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>About these updates:</strong> Posts, photos and videos above are embedded live directly from
+        each publisher's official Facebook Page using Facebook's own embed tool — nothing is copied or
+        rehosted. All content belongs to the respective page owners.
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <a href="kalpi.html">&larr; About Kalpi</a>
+        <a href="./">Back to Kalpitech</a>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('today-date').textContent = new Date().toLocaleDateString('en-IN', {
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+      })
+    </script>
+  </body>
+</html>

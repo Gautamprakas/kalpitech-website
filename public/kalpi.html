@@ -112,6 +112,29 @@
         color: var(--ink-soft);
         margin-top: 6px;
       }
+      .news-links {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 20px;
+      }
+      .news-link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--primary);
+        border-radius: 10px;
+        padding: 14px 18px;
+        background: var(--bg-muted);
+        text-decoration: none;
+        color: var(--ink);
+      }
+      .news-link:hover { border-left-color: var(--accent); background: #eef2ff; }
+      .news-link strong { display: block; font-size: 15px; }
+      .news-link span { display: block; font-size: 12.5px; color: var(--ink-soft); margin-top: 2px; }
+      .news-link .arrow { font-size: 18px; color: var(--ink-soft); flex-shrink: 0; }
       .note {
         margin-top: 40px;
         padding: 18px 20px;
@@ -210,6 +233,11 @@
         and scenes depicting the Ramayana line the way up, and the tower offers panoramic views over Kalpi
         and the Yamuna below.
       </p>
+
+      <div class="note">
+        <strong>Want the latest local news?</strong> Visit <a href="kalpi-news.html">Kalpi News</a> for live
+        updates from local reporters and news pages covering Kalpi and Jalaun district.
+      </div>
 
       <div class="note">
         <strong>Know Kalpi better than this page does?</strong> If you'd like to help us add more local

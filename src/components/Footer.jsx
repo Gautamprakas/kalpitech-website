@@ -7,6 +7,7 @@ export default function Footer() {
         <span>&copy; {new Date().getFullYear()} {brand.name}. All rights reserved.</span>
         <span className="footer__links">
           <a href="kalpi.html">About Kalpi</a>
+          <a href="kalpi-news.html">Kalpi News</a>
           <a href="#contact">Get in touch</a>
         </span>
       </div>

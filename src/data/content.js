@@ -10,6 +10,15 @@ export const contact = {
   formspreeEndpoint: 'https://formspree.io/f/mrennlwy',
 }
 
+// No live social profiles yet — these point to the contact section for now.
+// Swap `href` to the real profile URL as each account goes live.
+export const socials = [
+  { name: 'YouTube', icon: 'youtube', href: '#contact' },
+  { name: 'Facebook', icon: 'facebook', href: '#contact' },
+  { name: 'Instagram', icon: 'instagram', href: '#contact' },
+  { name: 'X (Twitter)', icon: 'twitter', href: '#contact' },
+]
+
 export const services = [
   {
     title: 'Web Development',

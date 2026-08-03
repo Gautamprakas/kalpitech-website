@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import SocialLinks from './SocialLinks'
 
 const links = [
   { href: '#services', label: 'Services' },
@@ -41,6 +42,8 @@ export default function Navbar() {
             Get a Quote
           </a>
         </nav>
+
+        <SocialLinks className="navbar__socials" />
 
         <button
           className="navbar__toggle"
