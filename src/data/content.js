@@ -85,6 +85,14 @@ export const projects = [
     icon: 'web',
     url: '/coaching-center/',
   },
+  {
+    title: 'NovaMart E-Commerce Store',
+    description:
+      'A full online storefront with category browsing, filters & search, wishlist, cart, coupons and order tracking — built with a modern icon and typography system for a premium shopping feel.',
+    tag: 'E-Commerce',
+    icon: 'design',
+    url: '/ecommerce/',
+  },
 ]
 
 export const pricingTiers = [
