@@ -69,6 +69,22 @@ export const projects = [
     icon: 'code',
     url: '/billing-software/',
   },
+  {
+    title: 'Cloud Kitchen / Food Delivery App',
+    description:
+      'A food ordering platform with restaurant browsing, cart & coupons, checkout, and live order tracking — modeled on a real production food delivery system.',
+    tag: 'Food Delivery App',
+    icon: 'mobile',
+    url: '/cloud-kitchen/',
+  },
+  {
+    title: 'Coaching Center Management System',
+    description:
+      'A student management system for computer coaching centers — enrollment, batches, fee collection, attendance, assignments and test results with separate admin, teacher and student logins.',
+    tag: 'Web App',
+    icon: 'web',
+    url: '/coaching-center/',
+  },
 ]
 
 export const pricingTiers = [
