@@ -60,6 +60,17 @@ export const process = [
   },
 ]
 
+export const projects = [
+  {
+    title: 'Billing & Invoicing Software',
+    description:
+      'A GST-ready billing system with customers, an item catalog, editable rates, and printable tax invoices — built as a live demo of what we can build for your business.',
+    tag: 'Web App',
+    icon: 'code',
+    url: '/billing-software/',
+  },
+]
+
 export const pricingTiers = [
   {
     name: 'Starter',
