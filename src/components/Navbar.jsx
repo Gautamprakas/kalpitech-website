@@ -21,7 +21,13 @@ export default function Navbar() {
     <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="container navbar__inner">
         <a href="#top" className="navbar__brand">
-          <img src="/logo.png" alt="Kalpitech" className="navbar__logo" width="382" height="140" />
+          <img
+            src={`${import.meta.env.BASE_URL}logo.png`}
+            alt="Kalpitech"
+            className="navbar__logo"
+            width="382"
+            height="140"
+          />
         </a>
 
         <nav className={`navbar__links ${open ? 'navbar__links--open' : ''}`}>

@@ -28,7 +28,7 @@ export default function Hero() {
 
         <div className="hero__visual">
           <img
-            src="/banner_1.webp"
+            src={`${import.meta.env.BASE_URL}banner_1.webp`}
             alt="Kalpitech — custom software, Android apps and web portals"
             width="1400"
             height="764"
