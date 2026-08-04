@@ -19,6 +19,8 @@ export const socials = [
   { name: 'X (Twitter)', icon: 'twitter', href: '#contact' },
 ]
 
+export const serviceAreas = ['Kalpi', 'Orai', 'Jalaun', 'Jhansi', 'Kanpur', 'Uttar Pradesh']
+
 export const services = [
   {
     title: 'Web Development',
