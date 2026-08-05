@@ -104,6 +104,14 @@ export const projects = [
     icon: 'design',
     url: '/ecommerce/',
   },
+  {
+    title: 'Visit Kalpi — Tourism Website',
+    description:
+      'A destination tourism site for Kalpi, Jalaun (UP) — heritage places to visit with history & quick facts, local restaurants & stays, travel planning, and a photo gallery.',
+    tag: 'Tourism',
+    icon: 'web',
+    url: '/kalpi-tourism/',
+  },
 ]
 
 export const pricingTiers = [
